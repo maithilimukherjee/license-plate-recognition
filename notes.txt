@@ -1,0 +1,38 @@
+1. canny
+canny is an edge detection algorithm.
+- what canny actually does (simple words)
+- noise reduction (gaussian blur)
+- gradient calculation (finds intensity change)
+- non-maximum suppression (thins edges)
+- double thresholding (strong vs weak edges)
+- edge tracking by hysteresis (connects real edges)
+
+when we do:
+
+edges = cv2.Canny(gray_filtered, 30, 200)
+
+30 → lower threshold
+200 → upper threshold
+
+license plates have strong rectangular edges
+canny highlights those edges clearly
+perfect for contour detection next
+
+2. subplot concept
+subplot = showing multiple images in one window
+plt.subplot(1,3,1)
+
+means:
+1 row
+3 columns
+
+this is the 1st image
+so:
+plt.subplot(1,3,1) → original image
+plt.subplot(1,3,2) → grayscale
+plt.subplot(1,3,3) → edges
+
+why this is useful:
+you visually compare each preprocessing stage
+debugging becomes easy
+helps in reports & ppt screenshots
