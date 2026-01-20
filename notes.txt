@@ -18,21 +18,34 @@ license plates have strong rectangular edges
 canny highlights those edges clearly
 perfect for contour detection next
 
-2. subplot concept
-subplot = showing multiple images in one window
-plt.subplot(1,3,1)
+logic flow:
 
-means:
-1 row
-3 columns
+edges
+  ↓
+find contours
+  ↓
+filter by area
+  ↓
+approximate polygon
+  ↓
+select rectangle (4 corners)
+  ↓
+extract plate region
 
-this is the 1st image
-so:
-plt.subplot(1,3,1) → original image
-plt.subplot(1,3,2) → grayscale
-plt.subplot(1,3,3) → edges
+character segmentation pipeline:
 
-why this is useful:
-you visually compare each preprocessing stage
-debugging becomes easy
-helps in reports & ppt screenshots
+plate image
+   ↓
+grayscale
+   ↓
+thresholding (binary image)
+   ↓
+morphological ops (clean noise)
+   ↓
+find contours
+   ↓
+filter contours by size
+   ↓
+extract characters
+
+character segmentation isolates individual alphanumeric symbols from the license plate using thresholding and contour analysis.
